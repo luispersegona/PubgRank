@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de Privacidade - Pubg Rank</title>
+    <link rel="icon" type="image/x-icon" href="./images/logoB.png">
+    <meta content="#dc2626" data-react-helmet="true" name="theme-color" />
+    <meta
+      name="title"
+      content="Política de Privacidade - Pubg Rank"
+    />
+    <meta
+      name="description"
+      content="Política de Privacidade do bot Pubg Rank para Discord."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pubg-rank.com/tos" />
+    <meta
+      property="og:title"
+      content="Política de Privacidade - Pubg Rank"
+    />
+    <meta
+      property="og:description"
+      content="Política de Privacidade do bot Pubg Rank para Discord."
+    />
+    <meta property="og:image" content="./images/logo.png" />
+    <meta property="og:color" content="#5b21b6" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://pubg-rank.com/tos" />
+    <meta
+      property="twitter:title"
+      content="Política de Privacidade - Pubg Rank"
+    />
+    <meta
+      property="twitter:description"
+      content="Política de Privacidade do bot Pubg Rank para Discord."
+    />
+    <meta property="twitter:image" content="./images/logo.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js"></script>
+  </head>
+  <body class="bg-black text-white [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-red-500">
+    <div
+      id="loader"
+      class="fixed inset-0 bg-black z-50 flex items-center justify-center"
+    >
+      <div
+        class="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin"
+      ></div>
+    </div>
+    <nav class="fixed w-full z-50 top-0">
+      <div class="nav-blur bg-black/30 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-20">
+            <div class="flex items-center gap-2">
+              <img
+                src="images/logoB.png"
+                alt="Pubg Rank Logo"
+                class="w-10 h-10 rounded-lg"
+              />
+              <span
+                class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700"
+                >Pubg Rank</span
+              >
+            </div>
+
+            <div class="hidden md:flex gap-8">
+              <a
+                href="index.html#hero"
+                class="text-white/70 hover:text-white transition-colors"
+                >Home</a
+              >
+              <a
+                href="index.html#features"
+                class="text-white/70 hover:text-white transition-colors"
+                >Funções</a
+              >
+              <a
+                href="index.html#commands"
+                class="text-white/70 hover:text-white transition-colors"
+                >Comandos</a
+              >
+              <a
+                href="index.html#testimonials"
+                class="text-white/70 hover:text-white transition-colors"
+                >Depoimentos</a
+              >
+              <a
+                href="/tos.html"
+                class="text-white/70 hover:text-white transition-colors"
+                >Política de Privacidade</a
+              >
+            </div>
+
+            <div class="md:hidden">
+              <button onclick="toggleMobileMenu()" class="text-white p-2">
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    class="menu-icon"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <a href="https://discord.com/oauth2/authorize?client_id=1317500947953483776&permissions=8&integration_type=0&scope=bot+applications.commands" class="hidden md:block">
+              <button
+                class="bg-white/10 hover:bg-white/20 px-6 py-2 rounded-lg transition-all duration-300"
+              >
+                Convide-nos
+              </button>
+            </a>
+          </div>
+
+          <div id="mobileMenu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-black/50 rounded-lg mt-2">
+              <a
+                href="index.html#hero"
+                class="block px-3 py-2 text-white/70 hover:text-white transition-colors"
+                >Home</a
+              >
+              <a
+                href="index.html#features"
+                class="block px-3 py-2 text-white/70 hover:text-white transition-colors"
+                >Funções</a
+              >
+              <a
+                href="index.html#commands"
+                class="block px-3 py-2 text-white/70 hover:text-white transition-colors"
+                >Comandos</a
+              >
+              <a
+                href="index.html#testimonials"
+                class="block px-3 py-2 text-white/70 hover:text-white transition-colors"
+                >Depoimentos</a
+              >
+              <a
+                href="/tos.html"
+                class="block px-3 py-2 text-white/70 hover:text-white transition-colors"
+                >Política de Privacidade</a
+              >
+              <a
+                href="https://discord.com/oauth2/authorize?client_id=1317500947953483776&permissions=8&integration_type=0&scope=bot+applications.commands"
+                class="block px-3 py-2 text-white/70 hover:text-white transition-colors"
+                >Convide-nos</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center text-red-500">Política de Privacidade para Pubg-Rank</h1>
+      <p class="text-white/60 text-lg mb-8 text-center">Última atualização: 25 de junho de 2025</p>
+
+      <div class="prose prose-invert text-white/70">
+        <p>Esta Política de Privacidade descreve como Pubg Rank ("o Bot", "nós", "nosso") coleta, usa e compartilha informações quando você usa o nosso bot de Discord. Ao adicionar e usar o Pubg Rank em seu servidor Discord, você concorda com a coleta e o uso de informações de acordo com esta política.</p>
+
+        <h2>1. Informações que Coletamos</h2>
+        <p>O Pubg Rank é projetado para fornecer estatísticas de PUBG. Para isso, precisamos coletar certas informações:</p>
+        
+        <h3 class="text-white">IDs de Usuário e Servidor do Discord:</h3>
+        <p>Coletamos os IDs (identificadores únicos) do seu usuário Discord e dos servidores onde o bot está presente. Isso é necessário para que o bot possa funcionar, responder aos comandos nos servidores corretos e armazenar configurações específicas do servidor (se aplicável).</p>
+        
+        <h3 class="text-white">Dados Relacionados a Comandos:</h3>
+        <p>Quando você usa um comando do bot (ex: `/stats <seu_nick_pubg>`), o bot pode registrar o comando usado, o ID do usuário que o invocou e o ID do canal/servidor onde foi usado. Isso nos ajuda a monitorar o uso do bot e depurar erros.</p>
+        
+        <h3 class="text-white">Dados de Estatísticas de PUBG:</h3>
+        <p>Para fornecer as estatísticas, o bot fará requisições a APIs públicas do PUBG (ou APIs de terceiros que forneçam esses dados). O bot processa o seu nickname de PUBG (fornecido por você) para buscar esses dados. Não armazenamos seus dados de login do PUBG ou qualquer informação sensível de sua conta de jogo. As estatísticas retornadas (como kills, vitórias, KD) são exibidas no Discord e não são armazenadas pelo bot de forma persistente após a exibição, a menos que seja para um recurso específico do bot (ex: leaderboard do servidor, se implementado).</p>
+        
+        <h3 class="text-white">Não coletamos:</h3>
+        <ul>
+          <li>Mensagens privadas (DMs) enviadas ao bot, a menos que sejam comandos diretos para o bot.</li>
+          <li>Endereços IP, e-mails ou outras informações pessoais que não sejam os IDs de Discord e o nickname de PUBG fornecido para busca de estatísticas.</li>
+        </ul>
+
+        <h2>2. Como Usamos as Informações</h2>
+        <p>As informações coletadas são usadas exclusivamente para:</p>
+        <ul>
+          <li>Fornecer as funcionalidades do bot, como a exibição de estatísticas de PUBG.</li>
+          <li>Melhorar o desempenho e a funcionalidade do bot.</li>
+          <li>Monitorar o uso do bot para fins de depuração e otimização.</li>
+          <li>Manter leaderboards ou rankings de estatísticas.</li>
+        </ul>
+
+        <h2>3. Compartilhamento de Informações</h2>
+        <p>Nós não vendemos, alugamos ou compartilhamos suas informações pessoais (IDs de Discord, nickname de PUBG) com terceiros para fins de marketing. As únicas exceções são:</p>
+        <ul>
+          <li><h3 class="text-white">APIs de PUBG ou Terceiros:</h3> Para obter as estatísticas, seu nickname de PUBG será enviado para as APIs de jogos de PUBG ou APIs de terceiros que fornecem esses dados. Essa comunicação é necessária para o funcionamento do bot.</li>
+          <li><h3 class="text-white">Conformidade Legal:</h3> Podemos divulgar suas informações se exigido por lei ou em resposta a um processo legal válido (ex: ordem judicial).</li>
+        </ul>
+
+        <h2>4. Retenção de Dados</h2>
+        <p>Retemos os dados coletados (IDs de usuários, IDs de servidor, logs de comandos) pelo tempo necessário para fornecer os serviços do bot e para fins de análise interna e depuração. As estatísticas de PUBG em si não são armazenadas de forma persistente, sendo consultadas a cada comando.</p>
+
+        <h2>5. Seus Direitos</h2>
+        <p>Você tem o direito de:</p>
+        <ul>
+          <li><h3 class="text-white">Acesso:</h3> Solicitar quais dados o bot possui sobre você.</li>
+          <li><h3 class="text-white">Correção:</h3> Pedir a correção de dados imprecisos.</li>
+          <li><h3 class="text-white">Exclusão:</h3> Solicitar a exclusão dos seus dados do nosso sistema, se aplicável (ex: se o bot armazenar algum dado de forma persistente, como configurações de usuário). Para remover o bot do seu servidor, basta expulsá-lo.</li>
+          <li><h3 class="text-white">Revogação de Consentimento:</h3> Se o tratamento for baseado no seu consentimento, você pode revogá-lo a qualquer momento.</li>
+        </ul>
+        <p>Para exercer esses direitos ou se tiver dúvidas sobre nossa política de privacidade, entre em contato conosco através de **[Seu e-mail de contato ou convite para o servidor de suporte do bot]**.</p>
+
+        <h2>6. Segurança</h2>
+        <p>Tomamos medidas razoáveis para proteger as informações coletadas contra acesso não autorizado, alteração, divulgação ou destruição. No entanto, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro.</p>
+
+        <h2>7. Alterações a Esta Política de Privacidade</h2>
+        <p>Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações publicando a nova Política de Privacidade nesta página. As alterações entrarão em vigor imediatamente após serem publicadas.</p>
+
+        <h2>8. Contato</h2>
+        <p>Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco:</p>
+        <ul>
+          <li>E-mail: luispersegona@hotmail.com</li>
+          <li>Servidor de Suporte do Discord: <a href="https://discord.gg/aF3KnfHJCF" class="text-red-400 hover:text-red-300" target="_blank">https://discord.gg/aF3KnfHJCF</a></li>
+        </ul>
+      </div>
+    </main>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-center py-16">
+        <button
+          onclick="scrollToTop()"
+          class="group bg-white/5 border border-white/10 rounded-2xl p-4 transition-all hover:border-red-500"
+        >
+          <svg
+            class="w-6 h-6 text-white/70 group-hover:text-white transition-colors"
+            fill="none"
+            viewbox="0 0 24 24"
+            stroke="currentcolor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <footer class="text-white py-16 border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div>
+            <img
+              class="h-10 mb-6"
+              src="./images/logoB.png"
+              alt="Pubg Rank Logo"
+            />
+            <p class="text-lg text-white/70">
+              Pubg Rank é uma ferramenta feita de jogador para jogador,
+              transformando estatísticas em algo disponível para todos.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Links Rápidos</h4>
+            <ul class="space-y-4">
+              <li>
+                <a href="index.html#hero" class="text-white/70 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="index.html#features" class="text-white/70 hover:text-white"
+                  >Funções</a
+                >
+              </li>
+              <li>
+                <a href="index.html#commands" class="text-white/70 hover:text-white"
+                  >Comandos</a
+                >
+              </li>
+              <li>
+                <a href="index.html#testimonials" class="text-white/70 hover:text-white"
+                  >Depoimentos</a
+                >
+              </li>
+              <li>
+                <a href="/tos.html" class="text-white/70 hover:text-white">Política de Privacidade</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xl font-semibold mb-4">Siga-nos</h4>
+            <ul class="space-y-4">
+              <li>
+                <a href="https://discord.com/oauth2/authorize?client_id=1317500947953483776&permissions=8&integration_type=0&scope=bot+applications.commands" class="text-white/70 hover:text-white">Convidar</a>
+              </li>
+              <li>
+                <a href="https://discord.gg/aF3KnfHJCF" class="text-white/70 hover:text-white">Discord</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 border-t border-white/20 pt-6 text-center">
+          <p class="text-sm text-white/50">
+            © 2025 PubgRank. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
