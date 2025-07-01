@@ -60,6 +60,11 @@ const commandsData = {
         permission: "Membro",
       },
       {
+        name: "/telemetria",
+        description: "Desenha sua trajetória na partida no mapa",
+        permission: "Membro",
+      },
+      {
         name: "/linkpubg",
         description: "Linka o usuário com a conta no PUBG",
         permission: "Membro",
