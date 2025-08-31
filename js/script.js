@@ -40,6 +40,11 @@ const commandsData = {
         permission: "Membro",
       },
       {
+        name: "/relatorio",
+        description: "Exibe detalhes de dano e armas mais usadas na ultima partida",
+        permission: "Membro",
+      },
+      {
         name: "/performace",
         description: "Exibe a performace do jogador nas últimas partidas",
         permission: "Membro",
@@ -47,6 +52,11 @@ const commandsData = {
       {
         name: "/matchs",
         description: "Exibe os IDS, mapas e estatísticas das últimas partidas de um jogador",
+        permission: "Membro",
+      },
+      {
+        name: "/versus",
+        description: "Compara suas estatísticas com outro Player",
         permission: "Membro",
       },
       {
@@ -65,13 +75,18 @@ const commandsData = {
         permission: "Membro",
       },
       {
-        name: "/linkpubg",
-        description: "Linka o usuário com a conta no PUBG",
+        name: "/heatmap",
+        description: "Desenha o mapa de calor no mapa",
         permission: "Membro",
       },
       {
-        name: "/lastdmg",
-        description: "Exibe detalhes do dano sofrido na ultima partida",
+        name: "/maestria",
+        description: "Nivel, dano, nocautes e mortes das suas melhores armas",
+        permission: "Membro",
+      },
+      {
+        name: "/linkpubg",
+        description: "Linka o usuário com a conta no PUBG",
         permission: "Membro",
       },
     ],
@@ -83,6 +98,16 @@ const commandsData = {
       {
         name: "/info",
         description: "Exibe a lista de comandos",
+        permission: "Membro",
+      },
+      {
+        name: "/status",
+        description: "Ping e Memoria do bot",
+        permission: "Membro",
+      },
+            {
+        name: "/invite",
+        description: "Link para invite do nosso bot",
         permission: "Membro",
       },
       {
