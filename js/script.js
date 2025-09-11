@@ -4,7 +4,7 @@ const commandsData = {
     title: "Administrador",
     commands: [
       {
-        name: "/menu",
+        name: "/configurar",
         description: "Configura salas e cargos necessários para o bot",
         permission: "Admin",
       },
@@ -30,58 +30,8 @@ const commandsData = {
     title: "Membros",
     commands: [
       {
-        name: "/rank",
+        name: "/menu",
         description: "Consulta estatísticas da temporada",
-        permission: "Membro",
-      },
-      {
-        name: "/lastdmg",
-        description: "Exibe detalhes do dano sofrido na ultima partida",
-        permission: "Membro",
-      },
-      {
-        name: "/relatorio",
-        description: "Exibe detalhes de dano e armas mais usadas na ultima partida",
-        permission: "Membro",
-      },
-      {
-        name: "/performace",
-        description: "Exibe a performace do jogador nas últimas partidas",
-        permission: "Membro",
-      },
-      {
-        name: "/matchs",
-        description: "Exibe os IDS, mapas e estatísticas das últimas partidas de um jogador",
-        permission: "Membro",
-      },
-      {
-        name: "/versus",
-        description: "Compara suas estatísticas com outro Player",
-        permission: "Membro",
-      },
-      {
-        name: "/impacto",
-        description: "Exibe o impacto do jogador na equipe em uma partida específica",
-        permission: "Membro",
-      },
-      {
-        name: "/leaderboard",
-        description: "Exibe o TOP5 de cada ranking selecionado",
-        permission: "Membro",
-      },
-      {
-        name: "/telemetria",
-        description: "Desenha sua trajetória na partida no mapa",
-        permission: "Membro",
-      },
-      {
-        name: "/heatmap",
-        description: "Desenha o mapa de calor no mapa",
-        permission: "Membro",
-      },
-      {
-        name: "/maestria",
-        description: "Nivel, dano, nocautes e mortes das suas melhores armas",
         permission: "Membro",
       },
       {
