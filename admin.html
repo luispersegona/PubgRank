@@ -56,69 +56,69 @@
     </main>
 
     <script>
-        const API_BASE_URL = 'https://pubgrank-api.squarecloud.app';
+      const API_BASE_URL = 'http://pubgrank-api.squarecloud.app';
+      
+      // Verifica se o token existe antes de carregar a página
+      window.addEventListener('load', () => {
+        const token = localStorage.getItem('api_token');
+        if (!token) {
+          window.location.href = 'login.html';
+        }
+      });
+
+      document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('api_token');
+        window.location.href = 'login.html';
+      });
+      
+      document.getElementById('publishForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const content = document.getElementById('postContent').value;
+        const imageUrl = document.getElementById('imageUrl').value;
+        const statusMessage = document.getElementById('statusMessage');
+        const token = localStorage.getItem('api_token');
         
-        // Verifica se o token existe antes de carregar a página
-        window.addEventListener('load', () => {
-            const token = localStorage.getItem('api_token');
-            if (!token) {
-                window.location.href = 'login.html';
-            }
-        });
+        // Verifica se pelo menos um campo foi preenchido
+        if (!content && !imageUrl) {
+          statusMessage.textContent = "❌ Você deve fornecer um conteúdo ou uma URL de imagem.";
+          statusMessage.style.color = 'red';
+          return;
+        }
 
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            localStorage.removeItem('api_token');
-            window.location.href = 'login.html';
-        });
-        
-        document.getElementById('publishForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const content = document.getElementById('postContent').value;
-            const imageUrl = document.getElementById('imageUrl').value;
-            const statusMessage = document.getElementById('statusMessage');
-            const token = localStorage.getItem('api_token');
-            
-            // Verifica se pelo menos um campo foi preenchido
-            if (!content && !imageUrl) {
-                statusMessage.textContent = "❌ Você deve fornecer um conteúdo ou uma URL de imagem.";
-                statusMessage.style.color = 'red';
-                return;
-            }
+        statusMessage.textContent = "Enviando comando...";
+        statusMessage.style.color = 'yellow';
 
-            statusMessage.textContent = "Enviando comando...";
-            statusMessage.style.color = 'yellow';
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/publish`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              token: token, 
+              content: content,
+              image_url: imageUrl 
+            })
+          });
 
-            try {
-                const response = await fetch(`http://localhost:5001/api/admin`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ 
-                        token: token, 
-                        content: content,
-                        image_url: imageUrl 
-                    })
-                });
+          const result = await response.json();
 
-                const result = await response.json();
+          if (response.ok && result.success) {
+            statusMessage.textContent = "Comando de publicação enviado com sucesso!";
+            statusMessage.style.color = 'green';
+            document.getElementById('postContent').value = '';
+            document.getElementById('imageUrl').value = '';
+          } else {
+            statusMessage.textContent = result.message || "Falha ao enviar o comando. Tente novamente.";
+            statusMessage.style.color = 'red';
+          }
 
-                if (response.ok && result.success) {
-                    statusMessage.textContent = "Comando de publicação enviado com sucesso!";
-                    statusMessage.style.color = 'green';
-                    document.getElementById('postContent').value = '';
-                    document.getElementById('imageUrl').value = '';
-                } else {
-                    statusMessage.textContent = result.message || "Falha ao enviar o comando. Tente novamente.";
-                    statusMessage.style.color = 'red';
-                }
-
-            } catch (error) {
-                statusMessage.textContent = "Erro de conexão. Verifique se o bot está online e a porta correta.";
-                statusMessage.style.color = 'red';
-                console.error("Erro:", error);
-            }
-        });
+        } catch (error) {
+          statusMessage.textContent = "Erro de conexão. Verifique se o bot está online e a porta correta.";
+          statusMessage.style.color = 'red';
+          console.error("Erro:", error);
+        }
+      });
     </script>
   </body>
 </html>
