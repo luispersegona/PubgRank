@@ -63,8 +63,10 @@
 
           // Este é um exemplo simples. Em produção, você deve
           // fazer esta verificação no servidor para segurança.
-          if (username === "admin" && password === "haeAEUHAEaeaj1231-aE") {
-            // Se o login for bem-sucedido, redirecione
+            if (username === "admin" && password === "haeAEUHAEaeaj1231-aE") {
+                alert("Login bem-sucedido! Redirecionando..."); // ADICIONE ESTA LINHA
+                window.location.href = "admin.html";
+            }
             window.location.href = "admin.html";
           } else {
             document.getElementById("message").textContent =
