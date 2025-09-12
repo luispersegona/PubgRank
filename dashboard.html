@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel de Administração do Bot</title>
+    <title>Painel de Admin</title>
     <link rel="icon" type="image/x-icon" href="https://placehold.co/80x80/dc2626/ffffff?text=PUBG" />
     <script src="https://cdn.tailwindcss.com"></script>
     <meta content="#dc2626" data-react-helmet="true" name="theme-color" />
     <style>
-      /* CSS para o efeito de gradiente do botão */
       .gradient-bg {
         background: linear-gradient(to right, #dc2626, #b91c1c);
       }
@@ -17,7 +16,6 @@
 
 <body class="bg-black text-white font-sans">
     <section class="min-h-screen relative flex items-center justify-center p-4">
-        <!-- Container do Painel -->
         <div id="panel-container" class="relative w-full max-w-lg mx-auto p-8 rounded-2xl bg-white/5 border border-white/10 shadow-lg">
 
             <!-- Tela de Login -->
@@ -63,16 +61,16 @@
                 </form>
             </div>
 
-            <!-- Tela de Administração (inicialmente oculta) -->
+            <!-- Tela de Administração -->
             <div id="admin-screen" class="hidden">
                 <h1 class="text-3xl font-bold text-center text-red-500 mb-4">Bem-vindo, Admin!</h1>
                 <p class="text-center text-gray-300">Selecione uma opção abaixo.</p>
                 <div class="mt-8 grid grid-cols-2 gap-4">
-                    <button class="gradient-bg px-4 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity duration-300" onclick="showPublisScreen()">
+                    <button class="gradient-bg px-4 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity duration-300" onclick="window.location.href='publis.html'">
                         Publis
                     </button>
-                    <button class="bg-gray-700 text-white px-4 py-3 rounded-xl font-semibold hover:bg-gray-600 transition-colors duration-300">
-                        Botão 2
+                    <button class="bg-gray-700 text-white px-4 py-3 rounded-xl font-semibold hover:bg-gray-600 transition-colors duration-300" onclick="window.location.href='apagar_publi.html'">
+                        Apagar Publi
                     </button>
                     <button class="bg-gray-700 text-white px-4 py-3 rounded-xl font-semibold hover:bg-gray-600 transition-colors duration-300">
                         Botão 3
@@ -88,46 +86,6 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Tela de Publis (inicialmente oculta) -->
-            <div id="publis-screen" class="hidden">
-                <h1 class="text-3xl font-bold text-center text-red-500 mb-4">Criar Publi</h1>
-                <p class="text-white/70 text-center mb-8">Preencha os campos para enviar uma mensagem formatada.</p>
-                <form class="space-y-6">
-                    <div>
-                        <label for="image-upload" class="block text-white/70 mb-2">Anexar Imagem</label>
-                        <input
-                            type="file"
-                            id="image-upload"
-                            name="image-upload"
-                            class="w-full p-3 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-500"
-                        />
-                    </div>
-                    <div>
-                        <label for="formatted-message" class="block text-white/70 mb-2">Mensagem Formatada</label>
-                        <textarea
-                            id="formatted-message"
-                            name="formatted-message"
-                            rows="8"
-                            class="w-full p-3 rounded-lg bg-black/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-red-500"
-                            placeholder="Digite a mensagem formatada aqui..."
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        class="w-full gradient-bg px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity duration-300"
-                    >
-                        Enviar
-                    </button>
-                    <button
-                        type="button"
-                        onclick="showAdminScreen()"
-                        class="w-full px-6 py-3 rounded-xl font-semibold bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
-                    >
-                        Voltar
-                    </button>
-                </form>
-            </div>
         </div>
     </section>
 
@@ -136,64 +94,41 @@
             const loginForm = document.getElementById('login-form');
             const loginScreen = document.getElementById('login-screen');
             const adminScreen = document.getElementById('admin-screen');
-            const publisScreen = document.getElementById('publis-screen');
-            const errorMessage = document.getElementById('error-message');
+            const loginError = document.getElementById('error-message');
+            
+            const API_AUTH_URL = 'https://testepubgrank.squareweb.app/auth';
 
-            const API_URL = 'https://testepubgrank.squareweb.app/auth';
-
-            // Função para alternar a visibilidade das telas
-            function showLoginScreen() {
-                loginScreen.classList.remove('hidden');
-                adminScreen.classList.add('hidden');
-                publisScreen.classList.add('hidden');
-            }
-
-            function showAdminScreen() {
-                loginScreen.classList.add('hidden');
-                adminScreen.classList.remove('hidden');
-                publisScreen.classList.add('hidden');
-            }
-
-            window.showPublisScreen = function() {
+            function showScreen(screen) {
                 loginScreen.classList.add('hidden');
                 adminScreen.classList.add('hidden');
-                publisScreen.classList.remove('hidden');
+                screen.classList.remove('hidden');
             }
 
-            // Lógica de login
             loginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-
                 const login = document.getElementById('username').value;
                 const senha = document.getElementById('password').value;
-
-                errorMessage.classList.add('hidden');
+                loginError.classList.add('hidden');
 
                 try {
-                    const response = await fetch(API_URL, {
+                    const response = await fetch(API_AUTH_URL, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ login, senha })
                     });
-
                     const data = await response.json();
 
                     if (data.success) {
-                        showAdminScreen();
+                        showScreen(adminScreen);
                     } else {
-                        errorMessage.textContent = data.message;
-                        errorMessage.classList.remove('hidden');
+                        loginError.textContent = data.message;
+                        loginError.classList.remove('hidden');
                     }
                 } catch (error) {
-                    errorMessage.textContent = 'Erro ao conectar com a API. Verifique a URL e a conexão.';
-                    errorMessage.classList.remove('hidden');
+                    loginError.textContent = 'Erro ao conectar com a API.';
+                    loginError.classList.remove('hidden');
                 }
             });
-
-            // Exponha a função showAdminScreen globalmente para o botão "Voltar"
-            window.showAdminScreen = showAdminScreen;
         });
     </script>
 </body>
