@@ -8,18 +8,12 @@ async function publishEmbed() {
   const embedData = {
     title: embedTitle,
     description: embedDescription,
-    color: parseInt(embedColor.replace('#', ''), 16), // Converte a cor para decimal
+    color: parseInt(embedColor.replace('#', ''), 16),
   };
 
-  if (!channelId || !embedTitle || !embedDescription) {
-    statusMessage.textContent = 'Por favor, preencha todos os campos.';
-    statusMessage.style.color = '#ef4444'; // Cor vermelha para erro
-    return;
-  }
-
   try {
-    // Substitua esta URL pelo endpoint real da sua API no bot
-    const response = await fetch('http://localhost:5000/api/publish', {
+    // Altere esta URL para o seu domínio público na Square Cloud
+    const response = await fetch('https://painel-pubgrank.squareweb.app/api/publish', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,10 +25,10 @@ async function publishEmbed() {
 
     if (response.ok) {
       statusMessage.textContent = data.message;
-      statusMessage.style.color = '#22c55e'; // Cor verde para sucesso
+      statusMessage.style.color = '#22c55e';
     } else {
       statusMessage.textContent = data.message;
-      statusMessage.style.color = '#ef4444'; // Cor vermelha para erro
+      statusMessage.style.color = '#ef4444';
     }
   } catch (error) {
     statusMessage.textContent = 'Erro ao enviar dados para a API.';
