@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apagar Publi</title>
+    <link rel="icon" type="image/x-icon" href="https://placehold.co/80x80/dc2626/ffffff?text=PUBG" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta content="#dc2626" data-react-helmet="true" name="theme-color" />
+    <style>
+      .gradient-bg {
+        background: linear-gradient(to right, #dc2626, #b91c1c);
+      }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans">
+    <section class="min-h-screen relative flex items-center justify-center p-4">
+        <div class="relative w-full max-w-lg mx-auto p-8 rounded-2xl bg-white/5 border border-white/10 shadow-lg">
+            <h1 class="text-3xl font-bold text-center text-red-500 mb-4">Apagar Última Publi</h1>
+            <p class="text-white/70 text-center mb-8">Clique no botão abaixo para apagar a última publicação em todos os canais de rank.</p>
+            
+            <button id="delete-publi-button" class="w-full bg-red-700 hover:bg-red-600 transition-colors duration-300 text-white px-6 py-3 rounded-xl font-semibold">
+                Confirmar e Apagar
+            </button>
+            <div id="delete-message" class="text-green-400 text-center text-sm mt-4 hidden"></div>
+
+            <button
+                type="button"
+                onclick="window.location.href='dashboard.html'"
+                class="w-full px-6 py-3 mt-4 rounded-xl font-semibold bg-gray-700 hover:bg-gray-600 transition-colors duration-300"
+            >
+                Voltar ao Menu
+            </button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const deletePubliButton = document.getElementById('delete-publi-button');
+            const deleteMessage = document.getElementById('delete-message');
+            
+            const API_DELETE_URL = '/api/apagar_publi';
+
+            deletePubliButton.addEventListener('click', async () => {
+                deleteMessage.classList.add('hidden');
+                deleteMessage.classList.remove('text-green-400', 'text-red-400');
+                
+                deleteMessage.textContent = 'Solicitando exclusão da última publi...';
+                deleteMessage.classList.add('text-yellow-400', 'block');
+
+                // CÓDIGO PARA ENVIO REAL PARA SEU BACKEND AQUI
+                try {
+                    // Exemplo de como a chamada `fetch` seria:
+                    // const response = await fetch(API_DELETE_URL, { method: 'POST' });
+                    // const data = await response.json();
+                    
+                    // Remova a simulação abaixo
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    const response = { success: true, message: "Publicação apagada com sucesso!" };
+
+                    if (response.success) {
+                        deleteMessage.textContent = response.message;
+                        deleteMessage.classList.add('text-green-400', 'block');
+                    } else {
+                        deleteMessage.textContent = response.message;
+                        deleteMessage.classList.add('text-red-400', 'block');
+                    }
+
+                } catch (error) {
+                    deleteMessage.textContent = 'Erro ao se conectar com o servidor para apagar a publi.';
+                    deleteMessage.classList.add('text-red-400', 'block');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
