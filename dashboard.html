@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração do Bot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Container do Painel -->
+    <div id="panel-container" class="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-sm">
+
+        <!-- Tela de Login -->
+        <div id="login-screen" class="space-y-6">
+            <h1 class="text-3xl font-bold text-center text-teal-400">Login Admin</h1>
+            <p class="text-center text-gray-400">Acesse o painel do seu bot</p>
+
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label for="login" class="block text-sm font-medium text-gray-400">Usuário</label>
+                    <input type="text" id="login" name="login" required
+                        class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 transition-colors">
+                </div>
+                <div>
+                    <label for="senha" class="block text-sm font-medium text-gray-400">Senha</label>
+                    <input type="password" id="senha" name="senha" required
+                        class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 transition-colors">
+                </div>
+                <div id="error-message" class="text-red-400 text-center text-sm hidden"></div>
+                <button type="submit"
+                    class="w-full px-4 py-2 bg-teal-500 text-white font-bold rounded-md hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-colors">
+                    Entrar
+                </button>
+            </form>
+        </div>
+
+        <!-- Tela de Administração (inicialmente oculta) -->
+        <div id="admin-screen" class="hidden">
+            <h1 class="text-3xl font-bold text-center text-teal-400 mb-4">Bem-vindo, Admin!</h1>
+            <p class="text-center text-gray-300">Este é o seu painel de administração do bot.</p>
+            <div class="mt-8 p-4 bg-gray-700 rounded-lg">
+                <p class="text-gray-400">Aqui você poderá adicionar controles e informações do seu bot, como:</p>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-300">
+                    <li>Contador de membros</li>
+                    <li>Status de comandos</li>
+                    <li>Logs do bot</li>
+                    <li>...e muito mais!</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const loginScreen = document.getElementById('login-screen');
+            const adminScreen = document.getElementById('admin-screen');
+            const errorMessage = document.getElementById('error-message');
+
+            // Substitua esta URL pela URL da sua API na SquareWeb
+            // Exemplo: 'https://testepubgrank.squareweb.app/auth'
+            const API_URL = 'https://testepubgrank.squareweb.app/auth';
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Impede o envio padrão do formulário
+
+                const login = document.getElementById('login').value;
+                const senha = document.getElementById('senha').value;
+
+                errorMessage.classList.add('hidden'); // Oculta a mensagem de erro anterior
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ login, senha })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Autenticação bem-sucedida, exibe a tela de admin
+                        loginScreen.classList.add('hidden');
+                        adminScreen.classList.remove('hidden');
+                        console.log('Login bem-sucedido!');
+                    } else {
+                        // Credenciais inválidas, exibe mensagem de erro
+                        errorMessage.textContent = data.message;
+                        errorMessage.classList.remove('hidden');
+                        console.error('Login falhou:', data.message);
+                    }
+                } catch (error) {
+                    // Erro na conexão com a API
+                    errorMessage.textContent = 'Erro ao conectar com a API. Verifique a URL e a conexão.';
+                    errorMessage.classList.remove('hidden');
+                    console.error('Erro de conexão:', error);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
